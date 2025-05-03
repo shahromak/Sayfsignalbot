@@ -1,110 +1,60 @@
-<!DOCTYPE html><html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mines - @sayfsignalbot</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background: #0f0f0f;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-    }.mine-options {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
+<!DOCTYPE html>
+<html lang="en">
 
-.mine-options button {
-  padding: 10px 20px;
-  border: none;
-  background: #1e1e1e;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-}
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/mines.css">
+    <title>@SayfSignalBot</title>
+  </head>
 
-.mine-options button.active {
-  background: #00c853;
-}
+  <body>
+    <div class="container">
+      <div class="mines-top">
+        <a class="back-button" href="./index.html"></a>
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(5, 60px);
-  grid-gap: 10px;
-  margin-bottom: 20px;
-}
+        <img src="assets/icons/mines.png" class="mines-logo"/>
+        
+        <div class="bot-name">
+          <img src="assets/icons/tg.png" class="tg-icon"/>
+          <a href="https://t.me/MELIKOV_55">@SayfSignalBot</a>
+        </div>
+      </div>
 
-.cell {
-  width: 60px;
-  height: 60px;
-  background: #1e1e1e;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-  cursor: pointer;
-  user-select: none;
-}
+      <div class="signals-display-container">
+        <div class="signals-display">
+          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+        </div>
+      </div>
 
-.cell.open {
-  background: #2e2e2e;
-}
+      <div class="mines-count-container">
+        <div class="mines-count">
+          <h3 id="minesCountTitle">количество ловушек</h3>
 
-.signal-button {
-  padding: 15px 30px;
-  background: #00c853;
-  border: none;
-  border-radius: 12px;
-  font-size: 18px;
-  color: white;
-  cursor: pointer;
-}
+          <div class="mines-count-buttons flex"> 
+            <button id="minusTrapButton">-</button>
+            <p id="minesCountDisplay">5</p>
+            <button id="plusTrapButton">+</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="game-buttons">
+        <button id="get-signal" class="game-button get-signal-button">GET SIGNAL</button>
+      </div>
 
-  </style>
-</head>
-<body>
-  <h2>Mines</h2>  <div class="mine-options" id="mineOptions"></div>  <div class="grid" id="grid"></div><button class="signal-button" id="signalBtn">Получить сигнал</button>
+      <video autoplay loop muted playsinline width="100%" height="100%" src="assets/videos/snow_bg.MP4" type="video/mp4" class="bgvideo" id="bgvideo"></video> 
+    </div>
 
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>  <script>
-    const mineOptions = [1, 3, 5, 7];
-    const mineOptionsContainer = document.getElementById('mineOptions');
-    const grid = document.getElementById('grid');
-    const signalBtn = document.getElementById('signalBtn');
+    <audio id="clickSoundEffect" src="assets/audio/click.mp3" preload="auto" volume="0.2"></audio>
 
-    let selectedMines = mineOptions[0];
-
-    mineOptions.forEach(num => {
-      const btn = document.createElement('button');
-      btn.innerText = num;
-      if (num === selectedMines) btn.classList.add('active');
-      btn.onclick = () => {
-        document.querySelectorAll('.mine-options button').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        selectedMines = num;
-      };
-      mineOptionsContainer.appendChild(btn);
-    });
-
-    for (let i = 0; i < 25; i++) {
-      const cell = document.createElement('div');
-      cell.classList.add('cell');
-      cell.onclick = () => {
-        cell.classList.add('open');
-      };
-      grid.appendChild(cell);
-    }
-
-    signalBtn.onclick = () => {
-      Telegram.WebApp.HapticFeedback.impactOccurred('medium');
-      Telegram.WebApp.sendData(JSON.stringify({ action: 'get_signal', mines: selectedMines }));
-    };
-
-    Telegram.WebApp.ready();
-    Telegram.WebApp.expand();
-  </script></body>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="scripts/sctipt.js"></script>
+    <script src="scripts/mines.js"></script>
+  </body>
 </html>
