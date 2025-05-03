@@ -1,60 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/mines.css">
-    <title>@SayfSignalBot</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="stylesheet" href="styles/mines.css" />
+  <title>@SayfSignalBot</title>
+</head>
 
-  <body>
-    <div class="container">
-      <div class="mines-top">
-        <a class="back-button" href="./index.html"></a>
-
-        <img src="assets/icons/mines.png" class="mines-logo"/>
-        
-        <div class="bot-name">
-          <img src="assets/icons/tg.png" class="tg-icon"/>
-          <a href="https://t.me/MELIKOV_55">@SayfSignalBot</a>
-        </div>
+<body>
+  <div class="container">
+    <div class="mines-top">
+      <a class="back-button" href="./index.html"></a>
+      <img src="assets/icons/mines.png" class="mines-logo" />
+      <div class="bot-name">
+        <img src="assets/icons/tg.png" class="tg-icon" />
+        <a href="https://t.me/MELIKOV_55">@SayfSignalBot</a>
       </div>
-
-      <div class="signals-display-container">
-        <div class="signals-display">
-          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
-          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
-          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
-          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
-          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
-        </div>
-      </div>
-
-      <div class="mines-count-container">
-        <div class="mines-count">
-          <h3 id="minesCountTitle">количество ловушек</h3>
-
-          <div class="mines-count-buttons flex"> 
-            <button id="minusTrapButton">-</button>
-            <p id="minesCountDisplay">5</p>
-            <button id="plusTrapButton">+</button>
-          </div>
-        </div>
-      </div>
-    
-      <div class="game-buttons">
-        <button id="get-signal" class="game-button get-signal-button">GET SIGNAL</button>
-      </div>
-
-      <video autoplay loop muted playsinline width="100%" height="100%" src="assets/videos/snow_bg.MP4" type="video/mp4" class="bgvideo" id="bgvideo"></video> 
     </div>
 
-    <audio id="clickSoundEffect" src="assets/audio/click.mp3" preload="auto" volume="0.2"></audio>
+    <div class="signals-display-container">
+      <div class="signals-display">
+        <!-- 5x5 = 25 cells -->
+        <!-- Можем это сгенерировать скриптом позже -->
+        <div class="cell"></div> <div class="cell"></div> <div class="cell"></div> <div class="cell"></div> <div class="cell"></div>
+        <div class="cell"></div> <div class="cell"></div> <div class="cell"></div> <div class="cell"></div> <div class="cell"></div>
+        <div class="cell"></div> <div class="cell"></div> <div class="cell"></div> <div class="cell"></div> <div class="cell"></div>
+        <div class="cell"></div> <div class="cell"></div> <div class="cell"></div> <div class="cell"></div> <div class="cell"></div>
+        <div class="cell"></div> <div class="cell"></div> <div class="cell"></div> <div class="cell"></div> <div class="cell"></div>
+      </div>
+    </div>
 
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script src="scripts/sctipt.js"></script>
-    <script src="scripts/mines.js"></script>
-  </body>
+    <div class="mines-count-container">
+      <div class="mines-count">
+        <h3 id="minesCountTitle">КОЛИЧЕСТВО ЛОВУШЕК</h3>
+        <div class="mines-count-buttons flex">
+          <button id="minusTrapButton">−</button>
+          <p id="minesCountDisplay">5</p>
+          <button id="plusTrapButton">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="game-buttons">
+      <button id="get-signal" class="game-button get-signal-button">ПОЛУЧИТЬ СИГНАЛ</button>
+    </div>
+
+    <video autoplay loop muted playsinline width="100%" height="100%" src="assets/videos/snow_bg.MP4" class="bgvideo" id="bgvideo"></video>
+  </div>
+
+  <audio id="clickSoundEffect" src="assets/audio/click.mp3" preload="auto"></audio>
+
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src="scripts/sctipt.js"></script>
+  <script src="scripts/mines.js"></script>
+</body>
+
 </html>
